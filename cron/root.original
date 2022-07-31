@@ -1,0 +1,14 @@
+# do daily/weekly/monthly maintenance
+# min   hour    day     month   weekday command
+*/15    *       *       *       *       run-parts /etc/periodic/15min
+0       *       *       *       *       run-parts /etc/periodic/hourly
+0       2       *       *       *       run-parts /etc/periodic/daily
+0       3       *       *       6       run-parts /etc/periodic/weekly
+0       5       1       *       *       run-parts /etc/periodic/monthly
+
+#Example
+#*/5 * * * *	/cron/tcp_udp.sh TCP 	$SERVER_IP <port>	<healthchecks_name>	>> /cron/log/cron.log 2>&1
+#*/5 * * * * 	/cron/tcp_udp.sh UDP 	$SERVER_IP <port>	<healthchecks_name>	>> /cron/log/cron.log 2>&1
+#*/5 * * * *    /cron/http.sh 		http://$SERVER_IP:<port> <healthchecks_name>	>> /cron/log/cron.log 2>&1
+#*/5 * * * *	/cron/http.sh		https://$SERVER_IP:<port> <healthchecks_name>	>> /cron/log/cron.log 2>&1
+
